@@ -4,51 +4,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnQR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_gravity="end|bottom"
-        android:tint="@android:color/white"
-        app:backgroundTint="#BFFFFF"
-        app:srcCompat="@drawable/ic_baseline_qr_code_24" />
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_name_layout_1"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp">
+
             <SearchView
                 android:id="@+id/input_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
                 android:iconifiedByDefault="false"
-                android:queryHint="Cari Nama Menu"
-                android:inputType="text" />
+                android:inputType="text"
+                android:queryHint="Cari Nama Menu" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp">
+
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_menu"
+                    android:id="@+id/recycler_view_menu_after_qr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/adapter_menu"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent" />
-
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/adapter_menu_after_qr" />
             </LinearLayout>
         </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
