@@ -43,7 +43,7 @@ public class AdapterMenuAfterQR extends RecyclerView.Adapter<AdapterMenuAfterQR.
     public AdapterMenuAfterQR.adapterMenuAfterQRViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         view = layoutInflater.inflate(R.layout.adapter_menu_after_qr, parent, false);
-        return new adapterMenuAfterQRViewHolder(view);
+        return new adapterMenuAfterQRViewHolder(view,menuList);
     }
 
 
@@ -55,6 +55,7 @@ public class AdapterMenuAfterQR extends RecyclerView.Adapter<AdapterMenuAfterQR.
         holder.txtHarga.setText(menu.getHarga());
         holder.txtDeskripsi.setText(menu.getDeskripsi());
         holder.txtKategori.setText(menu.getKategori());
+        holder.txtJumlah.setText(String.valueOf(menu.getTempJumlah()));
     }
     public void filter(List<Menu> menuList){
         this.menuList=menuList;
@@ -69,7 +70,7 @@ public class AdapterMenuAfterQR extends RecyclerView.Adapter<AdapterMenuAfterQR.
         TextView txtNamaMenu, txtHarga, txtDeskripsi, txtKategori, txtJumlah;
         private CardView cardPesan;
         Button btnAdd, btnMinus;
-        public adapterMenuAfterQRViewHolder(@NonNull View itemView) {
+        public adapterMenuAfterQRViewHolder(@NonNull View itemView, List<Menu> menuList) {
             super(itemView);
             txtNamaMenu = itemView.findViewById(R.id.tvNamaMenu);
             txtHarga = itemView.findViewById(R.id.tvHarga);
@@ -78,22 +79,40 @@ public class AdapterMenuAfterQR extends RecyclerView.Adapter<AdapterMenuAfterQR.
             btnAdd = itemView.findViewById(R.id.addButton);
             btnMinus = itemView.findViewById(R.id.minusButton);
             txtJumlah = itemView.findViewById(R.id.tvJumlah);
-//            btnAdd.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    int jumlah = Integer.valueOf(txtJumlah.getText().toString());
-//                    jumlah++;
-//                    txtJumlah.setText(jumlah);
-//                }
-//            });
-//            btnMinus.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    int jumlah = Integer.valueOf(txtJumlah.getText().toString());
-//                    jumlah--;
-//                    txtJumlah.setText(jumlah);
-//                }
-//            });
+            btnAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int jumlah = Integer.valueOf(txtJumlah.getText().toString());
+                    jumlah++;
+                    txtJumlah.setText(String.valueOf(jumlah));
+                    for (Menu menu : menuList)
+                    {
+                        if (menu.getNama_menu().equalsIgnoreCase(txtNamaMenu.getText().toString()))
+                        {
+                            menu.setTempJumlah(jumlah);
+                        }
+                    }
+                    //menuList.get(getAdapterPosition()).setTempJumlah(jumlah);
+                }
+            });
+            btnMinus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int jumlah = Integer.valueOf(txtJumlah.getText().toString());
+                    if (jumlah != 0) {
+                        jumlah--;
+                    }
+                    txtJumlah.setText(String.valueOf(jumlah));
+                    for (Menu menu : menuList)
+                    {
+                        if (menu.getNama_menu().equalsIgnoreCase(txtNamaMenu.getText().toString()))
+                        {
+                            menu.setTempJumlah(jumlah);
+                        }
+                    }
+                    //menuList.get(getAdapterPosition()).setTempJumlah(jumlah);
+                }
+            });
         }
 
     }

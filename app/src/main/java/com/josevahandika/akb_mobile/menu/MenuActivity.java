@@ -81,6 +81,7 @@ public class MenuActivity extends AppCompatActivity {
                     }
                 }
                 adapterMenu.filter(menuSearch);
+                adapterMenuAfterQR.filter(menuSearch);
                 return true;
             }
         });
@@ -154,12 +155,13 @@ public class MenuActivity extends AppCompatActivity {
                         String unit = jsonObject.optString("unit");
                         String id_bahan = jsonObject.optString("id_bahan");
 
-                        Menu menu = new Menu(id, nama_menu, takaran_saji, harga,kategori, unit,deskripsi, id_bahan);
+                        Menu menu = new Menu(id, nama_menu, takaran_saji, harga,kategori, unit,deskripsi, id_bahan, 0);
 
                         menuList.add(menu);
 
                     }
                     adapterMenu.setMenuList(menuList);
+                    adapterMenuAfterQR.setMenuList(menuList);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -2,9 +2,9 @@ package com.josevahandika.akb_mobile.entity;
 
 public class Menu {
     private String nama_menu,kategori, unit, deskripsi,takaran_saji,id_bahan,harga;
-    private int id;
+    private int id, tempJumlah;
 
-    public Menu(int id, String nama_menu, String takaran_saji, String harga, String kategori, String unit, String deskripsi, String id_bahan)
+    public Menu(int id, String nama_menu, String takaran_saji, String harga, String kategori, String unit, String deskripsi, String id_bahan, int tempJumlah)
     {
         this.id = id;
         this.nama_menu = nama_menu;
@@ -14,10 +14,19 @@ public class Menu {
         this.unit = unit;
         this.deskripsi= deskripsi;
         this.id_bahan = id_bahan;
+        this.tempJumlah = tempJumlah;
     }
 
     public String getNama_menu() {
         return nama_menu;
+    }
+
+    public int getTempJumlah() {
+        return tempJumlah;
+    }
+
+    public void setTempJumlah(int tempJumlah) {
+        this.tempJumlah = tempJumlah;
     }
 
     public void setNama_menu(String nama_menu) {
