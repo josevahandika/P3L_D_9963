@@ -60,7 +60,6 @@ public class MenuActivity extends AppCompatActivity {
         searchView = findViewById(R.id.input_search);
         qrBtn = findViewById(R.id.btnQR);
         adapterMenu = new AdapterMenu(menuList, this);
-        adapterMenuAfterQR = new AdapterMenuAfterQR(menuList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         //recyclerView.setAdapter(adapterMenu);
@@ -81,7 +80,6 @@ public class MenuActivity extends AppCompatActivity {
                     }
                 }
                 adapterMenu.filter(menuSearch);
-                adapterMenuAfterQR.filter(menuSearch);
                 return true;
             }
         });
@@ -104,9 +102,9 @@ public class MenuActivity extends AppCompatActivity {
         if (reservasi.equalsIgnoreCase("0")){
             recyclerView.setAdapter(adapterMenu);
         }else{
-            recyclerView.setAdapter(adapterMenuAfterQR);
-            qrBtn.setVisibility(View.INVISIBLE);
-            Toast.makeText(context, reservasi, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent();
+            startActivity(new Intent(MenuActivity.this, MenuAfterQRActivity.class));
+            finish();
         }
         getMenu();
     }
@@ -161,7 +159,6 @@ public class MenuActivity extends AppCompatActivity {
 
                     }
                     adapterMenu.setMenuList(menuList);
-                    adapterMenuAfterQR.setMenuList(menuList);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

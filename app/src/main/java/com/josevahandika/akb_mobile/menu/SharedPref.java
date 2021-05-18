@@ -15,6 +15,15 @@ public class SharedPref {
         editor.apply();
     }
 
+    public void setIdReservasi(int id){
+        android.content.SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("id", id);
+        editor.apply();
+    }
+
+    public int getIdReservasi(){
+        return sharedPreferences.getInt("id", 0);
+    }
     public boolean loadIsLogin() {
         return sharedPreferences.getBoolean("isLogin", false);
     }

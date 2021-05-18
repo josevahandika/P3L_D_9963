@@ -1,6 +1,8 @@
 package com.josevahandika.akb_mobile.entity;
 
-public class Menu {
+import java.io.Serializable;
+
+public class Menu implements Serializable {
     private String nama_menu,kategori, unit, deskripsi,takaran_saji,id_bahan,harga;
     private int id, tempJumlah;
 

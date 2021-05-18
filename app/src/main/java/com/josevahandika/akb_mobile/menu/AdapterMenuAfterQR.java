@@ -14,11 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.josevahandika.akb_mobile.R;
 import com.josevahandika.akb_mobile.entity.Menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterMenuAfterQR extends RecyclerView.Adapter<AdapterMenuAfterQR.adapterMenuAfterQRViewHolder>{
     private List<Menu> menuList;
     private Context context;
+    private List<adapterMenuAfterQRViewHolder> holder_list = new ArrayList<>();
     View view;
 
 //    public AdapterPesan(List<Pesan> pesanList, List<Pesan> pesanFilterList, Context context, AdapterPesan.deleteItemListener deleteItemListener) {
@@ -35,6 +37,7 @@ public class AdapterMenuAfterQR extends RecyclerView.Adapter<AdapterMenuAfterQR.
 
     public void setMenuList(List<Menu> menuList) {
         this.menuList = menuList;
+        holder_list.clear();
         notifyDataSetChanged();
     }
 
@@ -46,11 +49,18 @@ public class AdapterMenuAfterQR extends RecyclerView.Adapter<AdapterMenuAfterQR.
         return new adapterMenuAfterQRViewHolder(view,menuList);
     }
 
+    public void disableAddMinusButton(){
+        for(adapterMenuAfterQRViewHolder holder : holder_list){
+            holder.btnAdd.setVisibility(View.INVISIBLE);
+            holder.btnMinus.setVisibility(View.INVISIBLE);
+        }
+        notifyDataSetChanged();
+    }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterMenuAfterQR.adapterMenuAfterQRViewHolder holder, int position) {
         final Menu menu = menuList.get(position);
-
+        holder_list.add(holder);
         holder.txtNamaMenu.setText(menu.getNama_menu());
         holder.txtHarga.setText(menu.getHarga());
         holder.txtDeskripsi.setText(menu.getDeskripsi());
@@ -114,6 +124,8 @@ public class AdapterMenuAfterQR extends RecyclerView.Adapter<AdapterMenuAfterQR.
                 }
             });
         }
+
+
 
     }
 

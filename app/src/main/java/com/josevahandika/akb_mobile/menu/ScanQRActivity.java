@@ -99,6 +99,7 @@ public class ScanQRActivity extends AppCompatActivity implements ZXingScannerVie
         mScannerView.stopCamera();
         sharedPref.setIsLogin(true);
         sharedPref.setReservasi(rawResult.getText());
+        sharedPref.setIdReservasi(Integer.valueOf(rawResult.getText().split(";")[0]));
         finish();
 //        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //        builder.setTitle("Scan Result");
