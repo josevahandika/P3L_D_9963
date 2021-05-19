@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Akb_mobile"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.ScanQRActivity"></activity>
+        <activity android:name=".menu.CartActivity"></activity>
+        <activity android:name=".menu.ScanQRActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,9 +29,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".menu.MenuActivity"></activity>
-        <activity android:name=".menu.MenuAfterQRActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".menu.MenuActivity" />
+        <activity android:name=".menu.MenuAfterQRActivity" />
     </application>
 
 </manifest>

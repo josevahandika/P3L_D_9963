@@ -98,8 +98,8 @@ public class MenuActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         SharedPref sharedPref = new SharedPref(this);
-        String reservasi = sharedPref.getReservasi();
-        if (reservasi.equalsIgnoreCase("0")){
+        int reservasi = sharedPref.getIdReservasi();
+        if (reservasi ==0 ){
             recyclerView.setAdapter(adapterMenu);
         }else{
             Intent intent = new Intent();

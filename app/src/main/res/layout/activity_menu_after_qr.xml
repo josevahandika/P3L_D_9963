@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/btnBayar"
-            android:text="Bayar"></Button>
+            android:text="Selesai"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

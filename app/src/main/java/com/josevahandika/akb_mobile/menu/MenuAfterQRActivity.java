@@ -65,6 +65,7 @@ public class MenuAfterQRActivity extends AppCompatActivity {
         searchView = findViewById(R.id.input_search);
         bayarBtn = findViewById(R.id.btnBayar);
         selesaiBtn = findViewById(R.id.btnSelesai);
+        sharedPref = new SharedPref(this);
         adapterMenuAfterQR = new AdapterMenuAfterQR(menuList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -104,7 +105,8 @@ public class MenuAfterQRActivity extends AppCompatActivity {
         bayarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //sendAPITransaksi();
+                startActivity(new Intent(MenuAfterQRActivity.this,CartActivity.class));
+
             }
         });
     }
@@ -126,7 +128,7 @@ public class MenuAfterQRActivity extends AppCompatActivity {
     {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("id_transaksi", "42");
+            jsonObject.put("id_transaksi", sharedPref.getIdReservasi());
 
             JSONArray jsonArray = new JSONArray();
             for(Menu menu: listMenu)
